@@ -2,7 +2,7 @@
 
 **Name:** Kalkidan Binyam  
 **Date:** February 04, 2026  
-**GitHub Repo:** https://github.com/qalandin/project-chimera
+**GitHub Repo:** https://github.com/qalindan/project-chimera
 
 ## MCP Sense Connection Status
 
