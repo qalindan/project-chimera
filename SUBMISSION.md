@@ -135,4 +135,3 @@ Full troubleshooting documentation:
 https://www.notion.so/Troubleshooting-Journey-Setup-Logs-2fda28d818248030bca8e7f135418113?source=copy_link
 
 Thank you for the opportunity. Despite setup challenges, I persisted with troubleshooting (Gemini region blocks, Python aliases, PATH issues) and completed the report with depth.
-
