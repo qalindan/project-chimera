@@ -6,22 +6,8 @@
 
 ## MCP Sense Connection Status
 
-- Created `.vscode/mcp.json` with the exact config provided:
+ Created `.vscode/mcp.json` with the exact config provided:
 
-```json
-{
-  "servers": {
-    "tenxfeedbackanalytics": {
-      "url": "https://mcpulse.io/academy.org/proxy",
-      "type": "http",
-      "headers": {
-        "X-Device": "windows",
-        "X-Coding-Tool": "vscode"
-      }
-    }
-  },
-  "inputs": []
-}
 Opened Copilot Chat in Agent mode
 
 Clicked the "Add Server..." button visible at the bottom
