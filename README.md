@@ -28,16 +28,6 @@
 - Manual telemetry log: `MCP_verification.md`
 - All git commits verified from my account
 - Video shows development thinking process
-
-## MCP Sense Connection Status
-[Keep your existing MCP section here...]
-
-## Research Summary – Key Insights from Materials
-[Keep your research insights here...]
-
-## Architectural Approach – Decisions & Why
-[Keep your architecture decisions here...]
-
 ## Infrastructure
 
 ### Docker
@@ -55,7 +45,8 @@ RUN python -m pytest tests/ -v
 
 CMD ["python", "-m", "pytest", "tests/", "-v"]
 ### Makefile Commands
-```makefile
+```
+### makefile
 install: pip install -r requirements.txt
 test:    python -m pytest tests/ -v
 docker-build: docker build -t project-chimera .
