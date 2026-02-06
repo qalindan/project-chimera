@@ -1,10 +1,10 @@
 # MCP Telemetry Verification - Project Chimera
 
 ## GitHub Account Verification
-- **Username:** [your-github-username]
-- **Email:** [your-email]
+- **Username:** qalindan
+- **Email:** kalkidanbinyam83@gmail.com
 - **All Commits:** Verified from this account
-- **Repository:** https://github.com/[your-username]/project-chimera
+- **Repository:** https://github.com/qalindan/project-chimera
 
 ## Development Timeline
 - **Start:** February 6, 2025
@@ -14,7 +14,7 @@
 
 ## Git Verification
 ```bash
-$ git log --oneline --author="[your-email]"
+$ git log --oneline --author="kalkidanbinyam83@gmail.com"
 e1f2a3d Created specs/ directory and technical.md
 b4c5d6e Implemented trend_research.py with Pydantic models
 f7g8h9i Added .cursor/rules.mdc for agent context
