@@ -52,6 +52,30 @@ class TrendResearchAPI:
                     "confidence_score": 0.78
                 }
             ]
+            ,
+            "ethiopian-fashion": [
+                {
+                    "topic": "Resurgence of traditional Habesha dresses",
+                    "volume": 5400,
+                    "sentiment": "positive",
+                    "sources": ["Instagram", "Facebook", "Pinterest"],
+                    "confidence_score": 0.88
+                },
+                {
+                    "topic": "Ethiopian streetwear brands expanding across Africa",
+                    "volume": 3200,
+                    "sentiment": "positive",
+                    "sources": ["Twitter", "Blogs", "YouTube"],
+                    "confidence_score": 0.79
+                },
+                {
+                    "topic": "Local textile cooperatives driving sustainable fashion",
+                    "volume": 2100,
+                    "sentiment": "positive",
+                    "sources": ["News", "LinkedIn"],
+                    "confidence_score": 0.81
+                }
+            ]
         }
     
     def research_trends(self, input_data: dict) -> TrendResearchOutput:
@@ -93,3 +117,17 @@ class TrendResearchAPI:
             return True
         except ValidationError:
             return False
+
+    def fetch_ethiopian_fashion(self, region: str = "Africa", timeframe: str = "7d", max_results: int = 10) -> TrendResearchOutput:
+        """Convenience helper to fetch trends for the `ethiopian-fashion` niche.
+
+        Returns a `TrendResearchOutput` validated against the project contract.
+        """
+        input_data = {
+            "niche": "ethiopian-fashion",
+            "region": region,
+            "timeframe": timeframe,
+            "max_results": max_results,
+        }
+
+        return self.research_trends(input_data)
