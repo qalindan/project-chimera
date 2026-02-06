@@ -1,0 +1,56 @@
+# CodeRabbit Configuration for Project Chimera
+reviews:
+  # Basic settings
+  review_only_changed_files: true
+  collapse_walkthrough: false
+  
+  # Language specific settings
+  languages:
+    python:
+      summarization:
+        enabled: true
+      review:
+        enabled: true
+  
+  # Policies
+  policies:
+    - name: spec-alignment
+      description: "Check if code aligns with project specifications"
+      conditions:
+        - "Check if new code references specs/technical.md or specs/api_contract.md"
+        - "Verify input/output contracts match spec"
+        - "Ensure Pydantic models follow defined schemas"
+    
+    - name: security
+      description: "Security vulnerability checks"
+      conditions:
+        - "Check for hardcoded secrets"
+        - "Validate input sanitization"
+        - "Check for SQL injection risks"
+        - "Verify API key handling"
+    
+    - name: architecture
+      description: "Architecture compliance"
+      conditions:
+        - "All external APIs must go through MCP pattern"
+        - "TDD approach required (tests before implementation)"
+        - "Spec-first development mandatory"
+  
+  # Prompt engineering for AI reviewer
+  prompt:
+    system: |
+      You are reviewing code for Project Chimera, an autonomous influencer system.
+      
+      CRITICAL RULES:
+      1. NEVER approve code that doesn't reference specs/technical.md or specs/api_contract.md
+      2. Reject code that violates TDD principles (no tests for new features)
+      3. Flag any hardcoded API keys or secrets
+      4. Ensure all external API calls follow MCP server pattern
+      
+      Project uses:
+      - FastRender swarm architecture
+      - MCP servers for external APIs
+      - Pydantic for validation
+      - TDD with pytest
+      
+      Be thorough but constructive.

@@ -1,0 +1,51 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        make setup
+    
+    - name: Run tests
+      run: |
+        make test
+    
+    - name: Spec alignment check
+      run: |
+        make spec-check
+    
+    - name: Docker test
+      run: |
+        make docker-test
+
+  security:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Security scan
+      run: |
+        pip install bandit safety
+        bandit -r research/ -f json -o bandit-report.json || true
+        safety check -r requirements.txt --json > safety-report.json || true
+    
+    - name: Upload security reports
+      uses: actions/upload-artifact@v4
+      with:
+        name: security-reports
+        path: |
+          bandit-report.json
+          safety-report.json

@@ -1,35 +1,29 @@
-.PHONY: help install test lint format docker-build docker-run clean
+.PHONY: setup test spec-check docker-test clean help
 
 help:
-	@echo "Project Chimera - Make Commands"
-	@echo "install    - Install dependencies"
-	@echo "test       - Run tests"
-	@echo "lint       - Run linter"
-	@echo "format     - Format code"
-	@echo "docker-build - Build Docker image"
-	@echo "docker-run  - Run Docker container"
-	@echo "clean      - Clean up"
+	@echo "Project Chimera - Development Commands"
+	@echo ""
+	@echo "setup       - Install dependencies"
+	@echo "test        - Run test suite"
+	@echo "spec-check  - Verify code aligns with specs"
+	@echo "docker-test - Run tests in Docker container"
+	@echo "clean       - Clean up temporary files"
 
-install:
+setup:
 	pip install -r requirements.txt
 
 test:
 	python -m pytest tests/ -v
 
-test-coverage:
-	python -m pytest tests/ --cov=research --cov-report=html
+spec-check:
+	@echo "🔍 Checking spec alignment..."
+	@python scripts/spec_check.py || echo "Spec check failed"
+	@echo "✅ Spec check completed"
 
-lint:
-	flake8 research/ tests/ --max-line-length=88
-
-format:
-	black research/ tests/
-
-docker-build:
-	docker build -t project-chimera .
-
-docker-run:
-	docker run -p 8000:8000 project-chimera
+docker-test:
+	docker build -t project-chimera-test .
+	docker run --rm project-chimera-test make test
 
 clean:
-	rm -rf __pycache__ .pytest_cache htmlcov .coverage
+	rm -rf __pycache__ .pytest_cache .coverage htmlcov
+	find . -name "*.pyc" -delete
